@@ -6,9 +6,18 @@ const router = express.Router();
 
 // Rotas de usuários (apenas admin)
 router.get('/', authMiddleware, adminMiddleware, AuthController.listarUsuarios);
-router.post('/', authMiddleware, adminMiddleware, AuthController.criarUsuario);
+
+router.post('/cadastro', authMiddleware, adminMiddleware, AuthController.criarUsuario);
+
 router.put('/:id', authMiddleware, adminMiddleware, AuthController.atualizarUsuario);
+
+router.get('/:id', authMiddleware, adminMiddleware, AuthController.listarUsuarios);
+
 router.delete('/:id', authMiddleware, adminMiddleware, AuthController.excluirUsuario);
+
+
+
+
 
 // Rotas OPTIONS para CORS (preflight requests)
 router.options('/', (req, res) => {
